@@ -1,23 +1,8 @@
 """
 train_reranker.py
 
-Fine-tuning gotowego cross-encodera (ms-marco-MiniLM-L-6-v2) na własnych,
-domenowych danych (patrz training/generate_dataset.py).
-
-Co robi ten skrypt krok po kroku:
-  1. Wczytuje dane z data/training_data.jsonl
-  2. Dzieli je na zbiór treningowy i walidacyjny
-  3. Ewaluuje model BAZOWY (przed fine-tuningiem) na zbiorze walidacyjnym
-     -> to jest punkt odniesienia (baseline), bez niego nie da się ocenić,
-        czy fine-tuning w ogóle coś poprawił
-  4. Trenuje (fine-tunuje) model na zbiorze treningowym
-  5. Ewaluuje model PO fine-tuningu na tym samym zbiorze walidacyjnym
-  6. Zapisuje wytrenowany model lokalnie + porównanie metryk (baseline vs fine-tuned)
-
-Przed puszczeniem PEŁNEGO treningu polecam:
-  - Uruchomić z flagą --smoke_test (patrz niżej) na małej próbce danych,
-    żeby sprawdzić, czy wszystko działa i loss sensownie maleje
-  - Przejrzeć sekcję KONFIGURACJA poniżej
+Fine-tuning code for the documents I'd like it to be fine-tuned to. Using ms-marco-MiniLM-L-6 coz I need to be resource efficient, you can change it if you are fine-tuning it for your own usage
+-- fire a smoke test first (passed as an argument) to check if everything works
 """
 
 import argparse
@@ -36,10 +21,11 @@ from sentence_transformers import InputExample
 
 BASE_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
-NUM_EPOCHS = 3
-BATCH_SIZE = 16
-LEARNING_RATE = 2e-5
-WARMUP_RATIO = 0.05
+NUM_EPOCHS = 4
+BATCH_SIZE = 8
+LEARNING_RATE = 2.8749194736980314e-05
+WEIGHT_DECAY = 0.01
+WARMUP_RATIO = 0.07577274065180203
 VAL_SPLIT_RATIO = 0.15
 
 RANDOM_SEED = 67
@@ -131,7 +117,7 @@ def run_training(
         # testing on limited num of examples and 2 epochs to make sure lr is 'warmed up'
         print("\n[SMOKE TEST]\n")
         random.shuffle(all_examples)
-        all_examples = all_examples[:670]
+        all_examples = all_examples[:1500]
         epochs = 2
     else:
         epochs = NUM_EPOCHS
@@ -161,7 +147,7 @@ def run_training(
         train_dataloader=train_dataloader,
         epochs=epochs,
         warmup_steps=warmup_steps,
-        optimizer_params={"lr": LEARNING_RATE},
+        optimizer_params={"lr": LEARNING_RATE, "weight_decay": WEIGHT_DECAY},
         show_progress_bar=True,
     )
 
@@ -188,6 +174,7 @@ def run_training(
                         "num_epochs": epochs,
                         "batch_size": BATCH_SIZE,
                         "learning_rate": LEARNING_RATE,
+                        "weight_decay": WEIGHT_DECAY,
                         "train_size": len(train_examples),
                         "val_size": len(val_examples),
                     },
