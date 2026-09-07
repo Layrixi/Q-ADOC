@@ -2,8 +2,10 @@ pypdf
 python-docx
 requests
 sentence-transformers
+datasets
 chromadb
 fastapi
 uvicorn
 torch --index-url https://download.pytorch.org/whl/cu130
 torchvision --index-url https://download.pytorch.org/whl/cu130
+transformers[torch]
