@@ -9,3 +9,4 @@ uvicorn
 torch --index-url https://download.pytorch.org/whl/cu130
 torchvision --index-url https://download.pytorch.org/whl/cu130
 transformers[torch]
+optuna
