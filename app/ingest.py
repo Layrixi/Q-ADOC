@@ -108,7 +108,7 @@ def save_chunks(chunks: List[dict], output_path: str):
 if __name__ == "__main__":
     
     input_dir = os.path.join(os.path.dirname(__file__), "..", "training", "data", "raw_docs")
-    output_path = os.path.join(os.path.dirname(__file__), "..", "training", "data", "chunks.jsonl")
+    output_path = os.path.join(os.path.dirname(__file__), "..", "data", "chunks.jsonl")
 
     if not os.path.isdir(input_dir):
         os.makedirs(input_dir, exist_ok=True)

@@ -39,3 +39,5 @@ Thumbs.db
 .env
 .env.*
 *.local
+training/data/raw_docs/*
+
