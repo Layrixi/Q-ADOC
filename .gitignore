@@ -2,11 +2,11 @@
 .venv/
 DocAnwsererVenv/
 
-
 # Python cache
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # Packaging/build
 build/
@@ -42,4 +42,5 @@ Thumbs.db
 training/data/*
 data/*
 models/*.json
-frontend-react/node_modules/*
+frontend-react/node_modules/
+frontend-react/dist/
