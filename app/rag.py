@@ -4,9 +4,8 @@ rag.py
 Takes the top-N reranked chunks from retriever and 
 generates a natural-language answer, grounded in those chunks, using a local LLM via Ollama.
 
-Model choice: for ANSWER GENERATION- Qwen2.5:7b-instruct is a good default here too - if you have the
-hardware, Qwen2.5:14b-instruct gives noticeably better answer quality at
-the cost of speed.
+Model choice: for ANSWER GENERATION- Qwen2.5:7b is a good default here too - if you have the hardware, Qwen2.5:14b gives noticeably better answer quality atthe cost of speed.
+72b is the best but it weights 47gb so nah im not downloading that, but you can
 """
 
 import os
@@ -18,7 +17,7 @@ from app.retriever import Retriever
 # ---------------------------------------------------------------------------
 # Configuration
 
-ANSWER_MODEL = "qwen2.5:14b-instruct" 
+ANSWER_MODEL = "qwen2.5:14b" 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
 SYSTEM_INSTRUCTIONS = (

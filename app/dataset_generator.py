@@ -24,7 +24,7 @@ from typing import List, Dict, Optional
 from sentence_transformers import SentenceTransformer, util
 
 
-QUESTION_GEN_MODEL = "qwen2.5:7b-instruct"
+QUESTION_GEN_MODEL = "qwen2.5:7b"
 OLLAMA_URL = "http://localhost:11434/api/generate" # using default port
 NUM_NEGATIVES_PER_POSITIVE = 3       # n negative per positive
 RANDOM_SEED = 67
