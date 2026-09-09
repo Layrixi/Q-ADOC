@@ -39,8 +39,9 @@ Thumbs.db
 .env
 .env.*
 *.local
+# copyrights
 training/data/*
 data/*
-models/*.json
+
 frontend-react/node_modules/
 frontend-react/dist/
