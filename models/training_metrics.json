@@ -1,0 +1,29 @@
+{
+  "baseline": {
+    "baseline_accuracy": 0.8221757322175732,
+    "baseline_accuracy_threshold": 2.870133876800537,
+    "baseline_f1": 0.6604477611940298,
+    "baseline_f1_threshold": 0.4924195110797882,
+    "baseline_precision": 0.5959595959595959,
+    "baseline_recall": 0.7405857740585774,
+    "baseline_average_precision": 0.6604808520261856
+  },
+  "finetuned": {
+    "finetuned_accuracy": 0.893305439330544,
+    "finetuned_accuracy_threshold": 1.7007057666778564,
+    "finetuned_f1": 0.7940074906367041,
+    "finetuned_f1_threshold": -2.8201608657836914,
+    "finetuned_precision": 0.7186440677966102,
+    "finetuned_recall": 0.8870292887029289,
+    "finetuned_average_precision": 0.8090976707955442
+  },
+  "config": {
+    "base_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "num_epochs": 4,
+    "batch_size": 8,
+    "learning_rate": 2.8749194736980314e-05,
+    "weight_decay": 0.01,
+    "train_size": 5452,
+    "val_size": 956
+  }
+}
