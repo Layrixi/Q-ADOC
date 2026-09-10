@@ -25,7 +25,7 @@ from app.ingest import ingest_document, save_chunks
 from app.retriever import index_chunks, get_chroma_client, get_or_create_collection, COLLECTION_NAME
 from app.rag import RAGPipeline
 
-app = FastAPI(title="Document Q&A (RAG + fine-tuned reranker)")
+app = FastAPI(title="Q&ADOC")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
