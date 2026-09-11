@@ -100,7 +100,3 @@ python -m app.optuna_search
 ```
 
 The fine-tuned model is saved to `models/reranker-finetuned/` and picked up automatically the next time the backend starts.
-
-## 📄 License
-
-*MIT*
